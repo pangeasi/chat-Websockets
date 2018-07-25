@@ -1,7 +1,7 @@
 // Hay que modificar este socket por el siguiente: 
 //var wsUri = "ws://localhost:3030";
 
-var wsUri = "wss://echo.websocket.org";
+//var wsUri = "wss://echo.websocket.org";
 
 var output = document.getElementById("output");
 var notificador = document.getElementById("notificador");
