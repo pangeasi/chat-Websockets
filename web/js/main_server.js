@@ -1,5 +1,5 @@
 // Hay que modificar este socket por el siguiente: 
-// var wsUri = "ws://localhost:3030";
+//var wsUri = "ws://localhost:3030";
 
 var wsUri = "wss://echo.websocket.org";
 
