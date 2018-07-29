@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/socket.io/socket.io.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>chat con sockets</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div style="text-align: center; color: white; margin-top: 100px; margin-bottom: -50px;">
-        <h1>Handshake</h1>
-    </div>
     <main>
-        <div id="contenedor">
-            <div id="notificador"> </div>
-            <h2>webSocket</h2>
-            <div id="output"></div>
+        <div id="chat">
+            <br>
+            <label class="msj-init">los mensajes se mostraran cuando inicies sesion</label>
+        </div>
+        <div id="conectados">
+            <div id="cuenta">
+                <h2>Mi cuenta</h2>
+                <input type="text" name="nombre" id="nombre" placeholder="nombre de usuario" class="in"><br>
+                <input type="password" name="pass" id="pass" placeholder="contraseña" class="in"><br>
+                <button class="btn">Acceder</button>
+                <button class="btn">Registrar</button>
+            </div>
+            <h2 class="center">Usuarios conectados</h2>
+            <div id="uconectados">
+
+            </div>
         </div>
     </main>
     
-    <script src="./js/main_server.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
