@@ -16,12 +16,12 @@ app.get('/home', (req, res)=>res.sendFile('public/index.html' , { root : __dirna
 io.on('connection', function(socket){
   socket.on('new user', function(data){
     users.push({name:data.name,pass:data.pass});
-    socket.emit('getUsers', users);
-    socket.emit('getMensajes', chats);
+    io.emit('getUsers', users);
+    io.emit('getMensajes', chats);
   });
   socket.on('nuevo', function(data){
     chats.push({name:data.name,msj:data.msj});
-    socket.emit('add', chats[chats.length-1]);
+    io.emit('add', chats[chats.length-1]);
   });
 });
 

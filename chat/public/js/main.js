@@ -16,6 +16,7 @@ acceder.addEventListener('click',()=>{
 });
 enviar.addEventListener('click',()=>{
 	socket.emit('nuevo', {name:userName.value,msj:textoMensaje.value});
+	textoMensaje.value = '';
 });
 
 
