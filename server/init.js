@@ -13,12 +13,12 @@ net.createServer((socket) => {
             "Upgrade: websocket\r\n" +
             "Connection: Upgrade\r\n" +
             "WebSocket-Origin: http://localhost\r\n" +
-            "WebSocket-Location: ws://localhost:9090\r\n"+
+            "WebSocket-Location: ws://localhost:9090\r\n" +
             "Sec-WebSocket-Accept:" + key + "\r\n\r\n";
         console.log(header);
         socket.write(header);
     })
 }).listen({
-        host: "localhost",
-        port: 3030
-    }, () => console.log("Se ha iniciado el servidor en el puerto 3030"));
+    host: "localhost",
+    port: 3030
+}, () => console.log("Se ha iniciado el servidor en el puerto 3030"));
