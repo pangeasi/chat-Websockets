@@ -13,13 +13,20 @@
         <div id="chat">
             <br>
             <label class="msj-init">los mensajes se mostraran cuando inicies sesion</label>
+            <div id="mensajes"></div>
+            <div id="barra-env">
+                <input type="text" name="msj-text" id="msj-text" placeholder="escribe un mensaje" class="in2">
+                <div class="env-container">
+                    <img src="img/send-message.png" id="enviar">
+                </div>
+            </div>
         </div>
         <div id="conectados">
             <div id="cuenta">
                 <h2>Mi cuenta</h2>
                 <input type="text" name="nombre" id="nombre" placeholder="nombre de usuario" class="in"><br>
                 <input type="password" name="pass" id="pass" placeholder="contraseña" class="in"><br>
-                <button class="btn">Acceder</button>
+                <button class="btn" id="btn-acceder">Acceder</button>
                 <button class="btn">Registrar</button>
             </div>
             <h2 class="center">Usuarios conectados</h2>
