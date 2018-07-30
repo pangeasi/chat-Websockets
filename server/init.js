@@ -13,7 +13,7 @@ net.createServer((socket) => {
             "Upgrade: websocket\r\n" +
             "Connection: Upgrade\r\n" +
             "WebSocket-Origin: http://localhost\r\n" +
-            "WebSocket-Location: ws://localhost:9090\r\n" +
+            "WebSocket-Location: ws://localhost:3030\r\n" +
             "Sec-WebSocket-Accept:" + key + "\r\n\r\n";
         console.log(header);
         socket.write(header);
