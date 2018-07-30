@@ -3,8 +3,7 @@ const crypto = require("crypto");
 
 const getKey = (data) => {
     const key = data.toString().split("\r\n").find(e => e.includes("Sec-WebSocket-Key")).split(": ")[1];
-    const base64 = crypto.createHash('sha1').update(`${key}258EAFA5-E914-47DA-95CA-C5AB0DC85B11`).digest('base64');
-    return base64;
+    return crypto.createHash('sha1').update(`${key}258EAFA5-E914-47DA-95CA-C5AB0DC85B11`).digest('base64');
 };
 
 net.createServer((socket) => {
