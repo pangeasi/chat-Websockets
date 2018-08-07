@@ -17,8 +17,7 @@ net.createServer((socket) => {
         console.log(socket.address());
         // comprobar si es un nuevo usuario y dejarlo pasar
         // cuando se complete el handshake registrar el usuario.       
-        socket.write(Handshake(data));
-        test++;
+        socket.write(Handhake(data));
 
     });
 }).listen({
