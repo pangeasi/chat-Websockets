@@ -1,26 +1,31 @@
-const net = require("net");
-const crypto = require("crypto");
+const net = require('net');
+const asciiArt = require('./libs/mensajeServer.js');
 
-const Handshake = (data) => {
-    const key = data.toString().split("\r\n").find(e => e.includes("Sec-WebSocket-Key")).split(": ")[1];
-    const keyCipher = crypto.createHash('sha1').update(`${key}258EAFA5-E914-47DA-95CA-C5AB0DC85B11`).digest('base64');
-    const header = "HTTP/1.1 101 Web Switching Protocols\r\n" +
-        "Upgrade: websocket\r\n" +
-        "Connection: Upgrade\r\n" +
-        "Sec-WebSocket-Accept:" + keyCipher + "\r\n\r\n";
-    return header;
-};
+const libs = require('./libs/core.js');
+
+// Variable que tiene que ser eliminada al hacer la lógica del usuario
+let contador = 0;
 
 net.createServer((socket) => {
-    socket.on("data", (data) => {
-        // Guardar la dirección como usuario existente
-        console.log(socket.address());
-        // comprobar si es un nuevo usuario y dejarlo pasar
-        // cuando se complete el handshake registrar el usuario.       
-        socket.write(Handhake(data));
+    socket.on('data', (data) => { 
+        // TODO: Guardar la dirección como usuario existente
+        // TODO: comprobar si es un nuevo usuario y dejarlo pasar
+        // TODO: cuando se complete el handshake registrar el usuario. 
+
+        // Esto se hace solo para que no de el error de handshake cuando el usuario envíe su datos
+        if(contador == 0) {
+            socket.write(libs.Handshake(data));
+            contador++;
+        } else {
+            // Acá se tiene que descifrar los mensajes
+            console.log(data);
+        }   
 
     });
 }).listen({
-    host: "localhost",
+    host: 'localhost',
     port: 3030
-}, () => console.log("Se ha iniciado el servidor en el puerto 3030"));
+}, () => {
+    console.log('Se ha iniciado el servidor en el puerto 3030')
+    // console.log(asciiArt.mensaje());
+});
