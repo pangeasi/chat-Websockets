@@ -1,6 +1,6 @@
 const net = require('net');
 const asciiArt = require('./libs/mensajeServer.js');
-
+const config = require('./config/set-config')
 const libs = require('./libs/core.js');
 
 // Variable que tiene que ser eliminada al hacer la lógica del usuario
@@ -18,14 +18,22 @@ net.createServer((socket) => {
             contador++;
         } else {
             // Acá se tiene que descifrar los mensajes
-            console.log(data);
+            let length = parseInt(data[1].toString(2),2)-128
+            
+            
+            console.log(data)
+
+            console.log(length)
+
+            
+
         }   
 
     });
 }).listen({
     host: 'localhost',
-    port: 3030
+    port: config.port
 }, () => {
-    console.log('Se ha iniciado el servidor en el puerto 3030')
+    console.log(`Se ha iniciado el servidor en el puerto ${config.port}`)
     // console.log(asciiArt.mensaje());
 });
