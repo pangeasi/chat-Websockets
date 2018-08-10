@@ -17,6 +17,24 @@ const Handshake = (data) => {
     return header;
 };
 
+const getMessageMask = (length, data) => {
+    const out = [];   
+    if(length <= 125) {
+        out.push( Buffer.from(data.slice(2, 6)),  Buffer.from(data.slice(6)));
+    }
+    return out;
+}
+
+const Unmask = (data) => {
+    const length = data[1] & 0x7F;
+    let [mask, message] = getMessageMask(length, data);
+    let text = message.map( (value, i) => (value ^ mask[i%4])).toString("utf8");
+    return text;
+} 
+
+
+
 module.exports = {
-    Handshake: Handshake
+    Handshake: Handshake,
+    Unmask: Unmask
 }

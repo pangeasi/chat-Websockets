@@ -16,7 +16,7 @@ function testWebSocket() {
         notificador.style.background = "#3498db";
         output.innerHTML = "<span style='color:#3498db'>Conectado y se ha enviado el mensaje</span>";
         // Se envía el mensaje para tarea2
-        websocket.send("hola");
+        websocket.send("Hola que tal, felicidades");
     });
     websocket.addEventListener("message", (event) => {
         // Esto posiblemente no sea un mensaje de error, puede significar otro tipo de mensaje.

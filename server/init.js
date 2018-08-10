@@ -1,7 +1,7 @@
 const net = require('net');
 const asciiArt = require('./libs/mensajeServer.js');
 
-const libs = require('./libs/core.js');
+const {Handshake, Unmask} = require('./libs/core.js');
 
 // Variable que tiene que ser eliminada al hacer la lógica del usuario
 let contador = 0;
@@ -14,11 +14,12 @@ net.createServer((socket) => {
 
         // Esto se hace solo para que no de el error de handshake cuando el usuario envíe su datos
         if(contador == 0) {
-            socket.write(libs.Handshake(data));
+            socket.write(Handshake(data));
             contador++;
         } else {
-            // Acá se tiene que descifrar los mensajes
-            console.log(data);
+            // Acá se tiene que descifrar los mensaje
+            console.log(Unmask(data));
+            // console.log(data.toString("hex"));
         }   
 
     });
@@ -26,6 +27,8 @@ net.createServer((socket) => {
     host: 'localhost',
     port: 3030
 }, () => {
-    console.log('Se ha iniciado el servidor en el puerto 3030')
+    console.log('-----------------------------------------------');
+    console.log('Se ha iniciado el servidor en el puerto 3030');
+    console.log('-----------------------------------------------\n\n');
     // console.log(asciiArt.mensaje());
 });
