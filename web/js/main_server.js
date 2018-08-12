@@ -15,13 +15,19 @@ function testWebSocket() {
     websocket.addEventListener("open", (event) => {
         notificador.style.background = "#3498db";
         output.innerHTML = "<span style='color:#3498db'>Conectado y se ha enviado el mensaje</span>";
+        
         // Se envía el mensaje para tarea2
+
+        // ERROR: Esto dará un error de protocolo ya que el mensaje no está enmascarado
+        // TODO - Crear MASK
         websocket.send("Hola que tal, felicidades");
+
     });
     websocket.addEventListener("message", (event) => {
         // Esto posiblemente no sea un mensaje de error, puede significar otro tipo de mensaje.
         output.innerHTML += "<span style='color:#e74c3c'>Error Conexión</span>";
         notificador.style.background = "#e74c3c";
+        console.log(event);
     });
     websocket.addEventListener("error", (event) => {
         // Esto es el error de conexión

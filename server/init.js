@@ -16,6 +16,7 @@ net.createServer((socket) => {
         if(contador == 0) {
             socket.write(Handshake(data));
             contador++;
+            socket.write("Hola bienvenido");
         } else {
             // Acá se tiene que descifrar los mensaje
             console.log(Unmask(data));
