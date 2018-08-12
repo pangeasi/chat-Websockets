@@ -32,9 +32,13 @@ const Unmask = (data) => {
     return text;
 } 
 
+const Mask = (string) => {
+    // TODO: hacer el mask
+}
 
 
 module.exports = {
     Handshake: Handshake,
-    Unmask: Unmask
+    Unmask: Unmask,
+    Mask: Mask
 }

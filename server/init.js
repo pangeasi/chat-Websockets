@@ -1,7 +1,7 @@
 const net = require('net');
 const asciiArt = require('./libs/mensajeServer.js');
 
-const {Handshake, Unmask} = require('./libs/core.js');
+const {Handshake, Unmask, Mask} = require('./libs/core.js');
 
 // Variable que tiene que ser eliminada al hacer la lógica del usuario
 let contador = 0;
@@ -16,7 +16,7 @@ net.createServer((socket) => {
         if(contador == 0) {
             socket.write(Handshake(data));
             contador++;
-            socket.write("Hola bienvenido");
+            socket.write(Mask("Hola bienvenido"));
         } else {
             // Acá se tiene que descifrar los mensaje
             console.log(Unmask(data));

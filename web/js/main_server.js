@@ -25,8 +25,8 @@ function testWebSocket() {
     });
     websocket.addEventListener("message", (event) => {
         // Esto posiblemente no sea un mensaje de error, puede significar otro tipo de mensaje.
-        output.innerHTML += "<span style='color:#e74c3c'>Error Conexión</span>";
-        notificador.style.background = "#e74c3c";
+        output.innerHTML += "<br><hr><span style='color:#2ecc71'><br><span style='color: white'>Mensaje entrante:</span> <br>"+event.data+"</span>";
+        notificador.style.background = "#2ecc71";
         console.log(event);
     });
     websocket.addEventListener("error", (event) => {
